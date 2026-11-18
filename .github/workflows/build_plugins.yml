@@ -30,7 +30,7 @@ jobs:
         run: cmake -B build -G "Visual Studio 17 2022" -A x64
 
       - name: Configure CMake (macOS)
-        if: runner.os == 'macOS'
+        if: runner.os == 'macos'
         run: cmake -B build -G "Xcode"
 
       - name: Build Project (Release)
