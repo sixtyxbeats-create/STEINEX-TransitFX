@@ -23,10 +23,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Add MSBuild to PATH (Windows)
-        if: runner.os == 'Windows'
-        uses: microsoft/setup-msbuild@v2
-
       - name: Configure CMake (Windows)
         if: runner.os == 'Windows'
         run: cmake -B build -G "Visual Studio 17 2022" -A x64
