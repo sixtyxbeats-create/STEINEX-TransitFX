@@ -20,19 +20,13 @@ jobs:
             target_name: "SteinexTransitFX_AU"
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Configure CMake (Windows)
-        if: runner.os == 'Windows'
-        run: cmake -B build -G "Visual Studio 17 2022" -A x64
-
-      - name: Configure CMake (macOS)
-        if: runner.os == 'macOS'
-        run: cmake -B build -G "Xcode"
-
-      - name: Build Project (Release)
-        run: cmake --build build --config Release --target ${{ matrix.target_name }}
+      - name: Configure and Build
+        run: |
+          cmake -B build
+          cmake --build build --config Release --target ${{ matrix.target_name }}
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
